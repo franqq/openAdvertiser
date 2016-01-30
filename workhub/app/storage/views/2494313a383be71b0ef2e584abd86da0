@@ -1,0 +1,72 @@
+<?php echo $__env->make('members.layout.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('members.layout.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+      <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Payments</a>
+        </li>
+        <li>
+            <a href="#">Earnings</a>
+        </li>
+    </ul>
+</div>
+
+<div style ="text-align:center;"> 
+                    <?php if(Session::has('global')): ?>
+                    <div style="color:#990000;"><?php echo Session::get('global'); ?></div>
+                    <?php endif; ?>
+</div>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-user"></i> My Links</h2>
+
+              
+            </div>
+           <div class="box-content">
+     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+	  <th>ID</th>
+	  
+        <th>Share Link</th>
+        <th>Earned (Kes)</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($links as $link): ?>
+    <tr>
+
+        <td><?php echo $link->id; ?></td>
+        
+        <td class="center"> www.squeeber.com/share/<?php echo Auth::user()->username; ?>/<?php echo $link->id; ?></td>
+        <td class="center"><?php echo $link->clicks * 0.1; ?>.00</td>
+       
+        
+    </tr>
+    <?php endforeach; ?>
+    
+  
+    </tbody>
+    </table>
+     </div>
+        </div>
+    </div>
+</div>
+
+
+    <!--/span-->
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+<?php echo $__env->make('members.layout.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,139 @@
+<?php echo $__env->make('members.layout.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('members.layout.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#"> Report</a>
+        </li>
+		
+    </ul>
+</div>
+
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-list-alt"></i>  Generate Report</h2>
+
+              
+            </div>
+             <div style ="text-align:center;"> 
+                    <?php if(Session::has('global')): ?>
+                    <div style="color:#990000;"><?php echo Session::get('global'); ?></div>
+                    <?php endif; ?>
+            </div>
+            <div class="box-content row">
+                <div class="col-lg-7 col-md-12">
+                   <form class="form-horizontal" role="form" action="<?php echo URL::route('reports-post'); ?>" method="post">
+ <div  style="float:left;margin-left:10px;">
+	 <label class="col-sm-2 " for="inputdate" >Date From</label>
+    </div>
+	<div  style="float:left;margin-left:0;">
+	
+	<input type="date" class="form-control" e<?php echo (Input::old('Start_Date')) ? ' value ='.Input::old('Start_Date'). '' : ''; ?> name="Start_Date" placeholder="mm/dd/yyyy">
+	</div>
+	<div   style="float:left;margin-left:10px;">
+	
+     <label for="inputdateto" class="col-sm-2 ">Date To</label>
+	 </div>
+	<div  style="float:left;margin-left:0;">
+    <input type="date" class="form-control" e<?php echo (Input::old('End_Date')) ? ' value ='.Input::old('End_Date'). '' : ''; ?>  name="End_Date" placeholder="mm/dd/yyyy">
+  </div>
+  </div>
+ 
+ 
+  
+  <div class="form-group" style="float:left;">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Generate</button>
+    </div>
+  </div>
+  
+  
+	
+	
+  
+   
+  
+  
+<?php echo Form::token(); ?>
+
+</form>
+
+                   
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!--/span-->
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+</div><!--/.fluid-container-->
+
+<!-- external javascript -->
+
+<?php echo HTML::script('bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>
+
+
+<!-- library for cookie management -->
+<?php echo HTML::script('js/jquery.cookie.js'); ?>
+
+<!-- calender plugin -->
+<?php echo HTML::script('bower_components/moment/min/moment.min.js'); ?>
+
+<?php echo HTML::script('bower_components/fullcalendar/dist/fullcalendar.min.js'); ?>
+
+<!-- data table plugin -->
+<?php echo HTML::script('js/jquery.dataTables.min.js'); ?>
+
+
+<!-- select or dropdown enhancer -->
+<?php echo HTML::script('bower_components/chosen/chosen.jquery.min.js'); ?>
+
+<!-- plugin for gallery image view -->
+<?php echo HTML::script('bower_components/colorbox/jquery.colorbox-min.js'); ?>
+
+<!-- notification plugin -->
+<?php echo HTML::script('js/jquery.noty.js'); ?>
+
+<!-- library for making tables responsive -->
+<?php echo HTML::script('bower_components/responsive-tables/responsive-tables.js'); ?>
+
+<!-- tour plugin -->
+<?php echo HTML::script('bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js'); ?>
+
+<!-- star rating plugin -->
+<?php echo HTML::script('js/jquery.raty.min.js'); ?>
+
+<!-- for iOS style toggle switch -->
+<?php echo HTML::script('js/jquery.iphone.toggle.js'); ?>
+
+<!-- autogrowing textarea plugin -->
+<?php echo HTML::script('js/jquery.autogrow-textarea.js'); ?>
+
+<!-- multiple file upload plugin -->
+<?php echo HTML::script('js/jquery.uploadify-3.1.min.js'); ?>
+
+<!-- history.js for cross-browser state change on ajax -->
+<?php echo HTML::script('js/jquery.history.js'); ?>
+
+<!-- application script for Charisma demo -->
+<?php echo HTML::script('js/charisma.js'); ?>
+
+
+
+</body>
+</html>

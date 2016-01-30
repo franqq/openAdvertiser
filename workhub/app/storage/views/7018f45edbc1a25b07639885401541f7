@@ -1,0 +1,93 @@
+<?php echo $__env->make('members.layout.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('members.layout.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Link</a>
+        </li>
+		<li>
+            <a href="#">Create</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-edit"></i> Add Link</h2>
+
+              
+            </div>
+            <div class="box-content row">
+                <div class="col-lg-7 col-md-12">
+                  <div style ="text-align:center;"> 
+                    <?php if(Session::has('global')): ?>
+                    <div style="color:#990000;"><?php echo Session::get('global'); ?></div>
+                    <?php endif; ?>
+            </div>
+                   <form class="form-horizontal" role="form" action="<?php echo URL::route('addlink-post'); ?>" method="post">
+  <div class="form-group">
+  	
+  	<label for="inputfirstname" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10" style="margin-bottom:15px;">
+      <input type="text" class="form-control" id="Name" name="Name" required="required" placeholder="Enter Name eg. JKUAT*"
+      e<?php echo (Input::old('Name')) ? ' value ='.Input::old('Name'). '' : ''; ?> />
+    </div>
+     <?php if($errors->has('Name')): ?>
+              <div style="color:#990000; text-align:center;"><?php echo $errors->first('Name'); ?></div>
+     <?php endif; ?>
+    
+   <label for="inputfirstname" class="col-sm-2 control-label">Link</label>
+    <div class="col-sm-10" style="margin-bottom:15px;">
+      <input type="url" class="form-control" id="Link" name="Link" required="required" placeholder="Enter the link*"
+      e<?php echo (Input::old('Link')) ? ' value ='.Input::old('Link'). '' : ''; ?> />
+    </div>
+     <?php if($errors->has('Link')): ?>
+              <div style="color:#990000; text-align:center;"><?php echo $errors->first('Link'); ?></div>
+     <?php endif; ?>
+	
+	 <label for="inputsecondname" class="col-sm-2 control-label">Desc</label>
+    <div class="col-sm-10" style="margin-bottom:15px;">
+      <input type="text" class="form-control" id="Description"  name="Description"  placeholder="Brief Description eg. College Link"
+      e<?php echo (Input::old('Description')) ? ' value ='.Input::old('Description'). '' : ''; ?> />
+    </div>
+     <?php if($errors->has('Description')): ?>
+              <div style="color:#990000; text-align:center;"><?php echo $errors->first('Description'); ?></div>
+     <?php endif; ?>
+	
+	 
+  </div>
+ 
+ 
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+  </div>
+  <?php echo Form::token(); ?>
+
+</form>
+
+               </div>
+           </div>
+       </div>
+    </div>
+</div>
+
+
+    <!--/span-->
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+
+<?php echo $__env->make('members.layout.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

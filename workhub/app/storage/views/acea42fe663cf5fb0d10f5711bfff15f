@@ -1,0 +1,98 @@
+<?php echo $__env->make('members.layout.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('members.layout.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#"> Message</a>
+        </li>
+		<li>
+            <a href="#">Send Message</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-envelope"></i> Create Message</h2>
+
+              
+            </div>
+            <div class="box-content row">
+                <div class="col-lg-7 col-md-12">
+<div style ="text-align:center;"> 
+                    <?php if(Session::has('global')): ?>
+                    <div style="color:#990000;"><?php echo Session::get('global'); ?></div>
+                    <?php endif; ?>
+</div>
+
+                   <form class="form-horizontal" role="form"  action="<?php echo URL::route('sendmessage-post'); ?>" method="post">
+  <div class="form-group">
+    
+	
+	 <label for="inputmobilenumber" class="col-sm-2 control-label">Phone</label>
+    <div class="col-sm-10" style="margin-bottom:15px;">
+      <input type="text" class="form-control" id="inputmobilenumber" name="Phone_Number" required="required" placeholder="Enter the phone numbers and separate with a comma*"
+      e<?php echo (Input::old('Phone_Number')) ? ' value ='.Input::old('Phone_Number'). '' : ''; ?>/>
+    </div>
+     <?php if($errors->has('Phone_Number')): ?>
+              <div style="color:#990000; text-align:center;"><?php echo $errors->first('Phone_Number'); ?></div>
+     <?php endif; ?>
+	
+	
+	
+     <label for="inputidnumber" class="col-sm-2 control-label">Message</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" rows="5" id="inputmessage"  name="Message" required="required" placeholder="Type your message in here.....*"><?php if(Input::old('Message')): ?><?php echo Input::old('Message'); ?><?php endif; ?></textarea>
+    Auto-Calculator : Amount per text <strong style="color:#990000;"  ><strong id="printchatbox">loading...</strong></strong>
+
+    <script type="text/javascript">
+                      
+                      var inputBox = document.getElementById('inputmessage');
+        
+                        inputBox.onkeyup = function(){
+                       
+                           calculated = Math.ceil(inputBox.value.length/160)*2;
+                           
+                             document.getElementById('printchatbox').innerHTML = 'KSH ' + calculated+'.00';
+                        }
+                    </script>
+
+    </div>
+
+  </div>
+ 
+ 
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </div>
+  <?php echo Form::token(); ?>
+
+</form>
+
+                   
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!--/span-->
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+<?php echo $__env->make('members.layout.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
